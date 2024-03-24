@@ -1,0 +1,16 @@
+const customercontroller = require('../controller/customer.controller')
+const reactcontroller = require('../controller/react.controllers')
+const express = require('express')
+const routes = express.Router()
+routes.route('/').get(reactcontroller.reactPage)
+routes.route('/customer')
+.post(customercontroller.AddCustomer)
+.get(customercontroller.viewCustomer)
+//update
+routes.route('/customer/:id')
+.get(customercontroller.SingleViewCustomber)
+.post(customercontroller.transferAmount)
+routes.route('/transaction')
+.get(customercontroller.viewCustomerTransaction)
+routes.route('/*').get(reactcontroller.reactPage)
+module.exports = routes
